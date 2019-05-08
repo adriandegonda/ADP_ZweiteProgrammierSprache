@@ -1,0 +1,91 @@
+/*
+ * Aufgaben von ADG (23.4.2019)
+ * 3 Aufgaben (Tage seit der Geburt sehr vereinfacht)
+ * Eigene Aufgabe: Primzahlen berechnen (mit kleinem Fehler am Anfang). 
+ * Keine externen Quellen
+ * Programmiert in NetBeans IDE 8.2
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int fibunacci_ADG(int anzahl){
+    int zahl1 = 1;
+    printf("F-Zahl 1: %d\n", zahl1);
+    int zahl2 = 1;
+    printf("F-Zahl 2: %d\n", zahl2);
+    int zahlx;
+    int i = 3;
+    while (i < anzahl+1){
+        zahlx = zahl2;
+        zahl2 = zahl1 + zahl2;
+        printf("F-Zahl %d: %d\n", i, zahl2);
+        zahl1 = zahlx;
+        i++;
+    }
+    return zahl2;
+}
+
+int fakultaet_ADG(int zahl){
+    int i = 1;
+    int erg = 1;
+    while (i < zahl+1){
+        erg = erg * i;
+        i++;  
+        printf("Zwischenresultat: %d\n", erg);
+    }
+    return erg;
+}
+
+int tageseit0_ADG(int t, int m, int j) {
+    int erg = 0;
+    erg = t + (m*30) + (j*360);
+    return erg;
+}
+
+int primzahlen_ADG(int max){
+    int i = 2;
+    for (i=0;i < max;i++) {
+        printf("Aktuel geprüft wird: %d\n", i);
+        int j = 2;
+        while (j < i/2+2){
+            int test = i%j;
+            //printf("Test ist %d\n", test);
+            if (test == 0){
+                break;
+            }
+            else if (j < i/2+1){
+                printf("Primzahl: %d\n", i);
+                break;
+            }
+            else {
+                j++;
+            }
+        }
+        }
+    return i;
+    }
+ 
+int main()
+{
+    printf("\n---HIER FOLGEN DIE AUFGABEN DES ISA-MODULS---\n\n");
+    //Fibonacci
+    printf("Gesuchte Fibunacci-Zahl: %d\n\n", fibunacci_ADG(7));
+   
+    //Fakultät
+    printf("Gesuchte Fakultät lautet: %d\n\n", fakultaet_ADG(5));
+
+    //Tage 0 bis Geburtstag
+    int tage1 = tageseit0_ADG(5, 12, 1985);
+    printf("Tage von 0 bis zu deinem Geburtstag (vereinfacht): %d\n", tage1);
+    int tage2 = tageseit0_ADG(23, 4, 2019);
+    printf("Tage von 0 bis heute (vereinfacht): %d\n", tage2);
+    int tage3 = tage2 - tage1;
+    printf("So lange lebst du bereits (vereinfacht): %d\n\n", tage3);
+    
+    //Primzahlen bis zu Zahl x (sebst gewähle Aufgabe)
+    printf("Status: Bis %d überprüft\n", primzahlen_ADG(33));
+
+    return 0;
+}
